@@ -15,7 +15,7 @@ public class Dentista {
     private String nome;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String cro; // Registro Profissional
+    private String cro;
 
     @Column(nullable = false, length = 50)
     private String especialidade;
