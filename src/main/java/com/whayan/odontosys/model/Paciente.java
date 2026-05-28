@@ -1,8 +1,9 @@
 package com.whayan.odontosys.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.springframework.cglib.core.Local;
-
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
@@ -13,15 +14,19 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome do paciente é obrigatório")
+    @Column(nullable = false)
     private String nome;
 
+    @NotBlank(message = "O CPF é obrigatório")
     @Column(nullable = false, unique = true, length = 14)
     private String cpf;
 
-    @Column(length = 20)
+    @NotBlank(message = "O telefone é obrigatório")
+    @Column(nullable = false)
     private String telefone;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 

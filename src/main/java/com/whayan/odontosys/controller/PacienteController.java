@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.Valid;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/pacientes")
 public class PacienteController {
@@ -17,9 +22,9 @@ public class PacienteController {
     private PacienteRepository pacienteRepository;
 
 
-    @GetMapping
-    public List<Paciente> listarTodos() {
-        return pacienteRepository.findAll();
+    @GetMapping("/paginado")
+    public Page<Paciente> listarPaginado(@PageableDefault(size = 5, sort = "nome") Pageable pageable) {
+        return pacienteRepository.findAll(pageable);
     }
 
 
@@ -33,7 +38,7 @@ public class PacienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Paciente cadastrar(@RequestBody Paciente paciente) {
+    public Paciente cadastrar(@Valid @RequestBody Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
 

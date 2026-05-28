@@ -1,5 +1,6 @@
 package com.whayan.odontosys.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "data_hora", nullable = false)
     private LocalDateTime dataHora;
 

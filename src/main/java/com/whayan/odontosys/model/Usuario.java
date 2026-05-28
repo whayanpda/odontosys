@@ -1,6 +1,8 @@
 package com.whayan.odontosys.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -10,13 +12,16 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome é obrigatório")
+    @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @NotBlank(message = "O e-mail é obrigatório")
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 255)
+    @NotBlank(message = "A senha é obrigatória")
+    @Column(nullable = false)
     private String senha;
 
 
