@@ -22,8 +22,8 @@ Desenvolver uma aplicação completa, functional e utilizável, demonstrando dom
 * [x] Criação da estrutura base do projeto Spring Boot
 * [x] Mapeamento das entidades principais (`Paciente`, `Dentista`, `Usuario`)
 * [x] Criação e validação dos primeiros endpoints CRUD no Postman
-* [ ] Modelagem e relacionamento da entidade `Consulta`
-* [ ] Sistema de autenticação inicial
+* [x] Modelagem e relacionamento da entidade `Consulta`
+* [ ] Sistema de autenticação inicial (Opcional para o MVP / Próxima Etapa)
 
 ### 🟨 Frontend React
 * [ ] Setup do projeto React e consumo da API
